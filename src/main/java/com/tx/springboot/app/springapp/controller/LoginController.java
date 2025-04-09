@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
     @GetMapping("/")
-    public String showLoginPage() {
+/*     public String showLoginPage() {
         return "login";
+    } 
+*/
+    public String index() {
+        return "forward:/index.html";
     }
 
     @PostMapping("/login")
@@ -20,8 +24,10 @@ public class LoginController {
             @RequestParam("password") String password,
             Model model) {
         if ("terrance".equals(username) && "123456".equals(password)) {
+            System.out.println("success! Username: " + username + ", Password:" + password);
             return "success";
         } else {
+            System.out.println("failure! Username: " + username + ", Password:" + password);
             return "failure";
         }
     }
